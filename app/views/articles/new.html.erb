@@ -1,0 +1,11 @@
+<h1>Create a New Article</h1>
+
+
+<%= render partial: 'form' %>
+
+
+<form action="/articles" method="post">
+<input id="article_title" type="text" name="article[title]">
+<textarea id="article_body" name="article[body]"></textarea>
+<input type="submit" value="Create Article" name="commit">
+</form>
