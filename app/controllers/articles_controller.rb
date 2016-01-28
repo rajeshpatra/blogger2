@@ -40,4 +40,14 @@ class ArticlesController < ApplicationController
 		@article.update(article_params)
 		redirect_to article_path(@article)
 	end
+
+# before_action(it's preffered because do something before the action takes place) is same as before_filter 
+	before_action :requires_login, only: [:new, :create, :edit, :update, :destroy]
+
+	def requires_login
+		unless Author.count == 0 || current_user
+			redirect_to root_path
+			return false
+		end
+	end
 end
